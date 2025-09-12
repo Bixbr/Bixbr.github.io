@@ -1,8 +1,65 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
-<title>Bix's extra</title>
+  <meta charset="UTF-8">
+  <title>Bix's Extra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-light: #fff;
+      --text-light: #000;
+      --bg-dark: #121212;
+      --text-dark: #f0f0f0;
+      --font: system-ui, sans-serif;
+    }
+
+    body {
+      margin: 2em 1em;
+      font-family: var(--font);
+      background-color: light-dark(var(--bg-light), var(--bg-dark));
+      color: light-dark(var(--text-light), var(--text-dark));
+      line-height: 1.6;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.3em;
+    }
+
+    p {
+      font-size: 1em;
+      margin-bottom: 1.2em;
+    }
+
+    a {
+      display: inline-block;
+      padding: 0.4em 0;
+      font-weight: 500;
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-<h2>Bix's Extra</h2>
-<p> this is a for all extra's that are not on the public site</p>
+  <h2>Bix's Extra</h2>
+  <p>
+    This page lists extras not available on the public site, including most services hosted at <code>bixed.xyz</code>.
+    If you need access to anything else, feel free to DM me on Discord at <strong>@bixbri</strong>.
+  </p>
+  <a href="Index-of.html">Eden backup</a>
+  <br>
+  <a href="https://git.bixed.xyz/">Bix's Git</a>
+  <br>
+  <a href="TBC">Coming soon...</a>
+  <!-- Yes, I know this is on github so the source code is public, Which means this is a public site.-->
+</body>
+</html>
+
