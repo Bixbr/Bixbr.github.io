@@ -38,15 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission handling (for demonstration only)
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('This is a demo form. In a real website, you would need to set up a form handling service like Formspree or Netlify Forms.');
-        });
-    }
-    
     // Animated typing effect for code animation
     function typeEffect(element, text, speed) {
         let i = 0;
