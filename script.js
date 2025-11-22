@@ -1,99 +1,99 @@
-// Wait for the DOM to be fully loaded
+// Dark mode toggle
+(function(){
+    const themeToggle = document.getElementById('theme-toggle');
+    function setTheme(dark) {
+        document.body.classList.toggle('dark', dark);
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+    themeToggle.checked = localStorage.getItem('theme') === 'dark';
+    setTheme(themeToggle.checked);
+    themeToggle.addEventListener('change', e => setTheme(e.target.checked));
+})();
+
+// Current year in footer
 document.addEventListener('DOMContentLoaded', function() {
-    // Update current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Theme toggle functionality
-    const themeSwitch = document.getElementById('theme-switch');
-    
-    // Check for saved theme preference
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeSwitch.checked = true;
-    }
-    
-    // Toggle theme when switch is clicked
-    themeSwitch.addEventListener('change', function() {
-        if (this.checked) {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
+    document.getElementById('current-year').textContent = (new Date()).getFullYear();
+
+    // Hero tagline animation
+    const taglines = [
+        "Major Arch user",
+        "Full-time Arch user, part-time Androider",
+        "The sun never sets on the British Empire",
+        "#MakeBattlefront3, spread the word!",
+        "Yes this is my discord profile; It's a blue oreo, nothing else",
+        "Direct cause of having too much time on my hands"
+    ];
+    const taglineElem = document.getElementById('animated-tagline');
+    let taglineIndex = 0, charIndex = 0, isErasing = false;
+    function typeTagline() {
+        const line = taglines[taglineIndex];
+        if (!isErasing) {
+            taglineElem.textContent = line.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex < line.length) setTimeout(typeTagline, 56);
+            else setTimeout(()=>{isErasing=true;typeTagline()}, 1500);
         } else {
-            document.body.classList.remove('dark-mode');
-            localStorage.setItem('theme', 'light');
+            taglineElem.textContent = line.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex > 0) setTimeout(typeTagline, 30);
+            else { isErasing=false; taglineIndex=(taglineIndex+1)%taglines.length; setTimeout(typeTagline, 700);}
         }
-    });
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            window.scrollTo({
-                top: targetElement.offsetTop - 70,
-                behavior: 'smooth'
-            });
-        });
-    });
-    
-    // Animated typing effect for code animation
-    function typeEffect(element, text, speed) {
+    }
+    if(taglineElem) typeTagline();
+
+    // About code animation
+    const code = [
+        "function introduceMyself() {",
+                          "  const me = {",
+                          '    name: "Bix",',
+                          '    role: "Side character",',
+                          '    skills: ["Colonising", "Arch", "rizz"],',
+                          '    interests: ["Gaming", "Coding"],',
+                          '    currentlyLearning: "Javascript!"',
+                          "  };",
+                          '  console.log("Hello World! I\'m " + me.name);',
+                          "  return me;",
+                          "}"
+    ];
+    const codeElem = document.getElementById('about-code');
+    if(codeElem) {
+        codeElem.innerHTML = "";
         let i = 0;
-        element.innerHTML = '';
-        
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
+        function typeLine() {
+            if(i < code.length) {
+                codeElem.innerHTML += code[i++] + "<br/>";
+                setTimeout(typeLine, 120);
             }
         }
-        
-        type();
+        setTimeout(typeLine, 500);
     }
-    
-    // Animation for skill bars
-    function animateSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-level');
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 300);
-        });
-    }
-    
-    // Intersection Observer for animating elements when they come into view
-    const observerOptions = {
-        threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (entry.target.id === 'skills') {
-                    animateSkillBars();
-                }
+
+    // Reveal on scroll
+    const revealElems = document.querySelectorAll('.fade-in');
+    const obs = new window.IntersectionObserver(entries => {
+        for(const entry of entries) {
+            if(entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                obs.unobserve(entry.target);
             }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
-    });
-    
-    // Custom code animation 
-    const codeAnimation = document.getElementById('code-animation');
-    if (codeAnimation) {
-        const originalContent = codeAnimation.innerHTML;
-        codeAnimation.innerHTML = '';
-        setTimeout(() => {
-            typeEffect(codeAnimation, originalContent, 5);
-        }, 1000);
+        }
+    }, { threshold: 0.13 });
+    revealElems.forEach(e=>obs.observe(e));
+
+    // Animate skill bars when skills section comes into view
+    const skillSection = document.getElementById('skills');
+    if(skillSection) {
+        let triggered = false;
+        const bars = skillSection.querySelectorAll('.bar-fill');
+        function animateBars() {
+            bars.forEach(bar=>{
+                const pct = bar.getAttribute('data-width');
+                bar.style.width = pct + "%";
+            });
+        }
+        const barObs = new IntersectionObserver(entries=>{
+            for(const e of entries) {if(e.isIntersecting && !triggered) { animateBars(); triggered=true; } }
+        },{threshold:0.25});
+        barObs.observe(skillSection);
     }
 });
