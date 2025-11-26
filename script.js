@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "The sun never sets on the British Empire",
         "#MakeBattlefront3, spread the word!",
         "Yes this is my discord profile; It's a blue oreo, nothing else",
-        "Direct cause of having too much time on my hands"
+        "Direct cause of having too much time on my hands",
         "I'm a Tory, Get over it."
     ];
     const taglineElem = document.getElementById('animated-tagline');
