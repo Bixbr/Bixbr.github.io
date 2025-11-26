@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "#MakeBattlefront3, spread the word!",
         "Yes this is my discord profile; It's a blue oreo, nothing else",
         "Direct cause of having too much time on my hands"
+        "I'm a Tory, Get over it."
     ];
     const taglineElem = document.getElementById('animated-tagline');
     let taglineIndex = 0, charIndex = 0, isErasing = false;
