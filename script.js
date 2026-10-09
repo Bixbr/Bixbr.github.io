@@ -1,22 +1,22 @@
-(function() {
-  const themeToggle = document.getElementById('theme-toggle');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const savedTheme = localStorage.getItem('theme');
-  const isDark = savedTheme === 'dark' || (savedTheme === null && prefersDark);
-
-  function setTheme(dark) {
-    document.body.classList.toggle('dark', dark);
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }
-
-  themeToggle.checked = isDark;
-  setTheme(isDark);
-  themeToggle.addEventListener('change', e => setTheme(e.target.checked));
-})();
-
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('current-year').textContent = new Date().getFullYear();
-
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const savedMode = localStorage.getItem('darkMode');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  const isDark = savedMode === 'true' || (savedMode === null && prefersDark);
+  
+  if (isDark) {
+    document.body.classList.add('dark-mode');
+    darkModeToggle.checked = true;
+  }
+  
+  darkModeToggle.addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', this.checked);
+  });
+  
+  document.getElementById('year').textContent = new Date().getFullYear();
+  
   const taglines = [
     'Major Arch user',
     'Full-time Arch user, part-time Androider',
@@ -26,30 +26,43 @@ document.addEventListener('DOMContentLoaded', function() {
     'Direct cause of having too much time on my hands',
     'I\'m a Tory, Get over it.'
   ];
-  const taglineElem = document.getElementById('animated-tagline');
-  let taglineIndex = 0, charIndex = 0, isErasing = false;
-
-  function typeTagline() {
-    const line = taglines[taglineIndex];
-    if (!isErasing) {
-      taglineElem.textContent = line.substring(0, charIndex + 1);
+  
+  const typedText = document.getElementById('typed-text');
+  let taglineIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  
+  function typeEffect() {
+    const currentTagline = taglines[taglineIndex];
+    
+    if (!isDeleting) {
+      typedText.textContent = currentTagline.substring(0, charIndex + 1);
       charIndex++;
-      if (charIndex < line.length) setTimeout(typeTagline, 45);
-      else setTimeout(() => { isErasing = true; typeTagline(); }, 2000);
+      
+      if (charIndex === currentTagline.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 2000);
+        return;
+      }
     } else {
-      taglineElem.textContent = line.substring(0, charIndex - 1);
+      typedText.textContent = currentTagline.substring(0, charIndex - 1);
       charIndex--;
-      if (charIndex > 0) setTimeout(typeTagline, 20);
-      else {
-        isErasing = false;
+      
+      if (charIndex === 0) {
+        isDeleting = false;
         taglineIndex = (taglineIndex + 1) % taglines.length;
-        setTimeout(typeTagline, 800);
+        setTimeout(typeEffect, 500);
+        return;
       }
     }
+    
+    const speed = isDeleting ? 20 : 50;
+    setTimeout(typeEffect, speed);
   }
-  if (taglineElem) typeTagline();
-
-  const code = [
+  
+  typeEffect();
+  
+  const codeLines = [
     'function introduceMyself() {',
     '  const me = {',
     '    name: "Bix",',
@@ -62,59 +75,26 @@ document.addEventListener('DOMContentLoaded', function() {
     '  return me;',
     '}'
   ];
-  const codeElem = document.getElementById('about-code');
-  if (codeElem) {
-    codeElem.innerHTML = '';
-    let i = 0;
-    function typeLine() {
-      if (i < code.length) {
-        codeElem.innerHTML += code[i++] + '<br/>';
-        setTimeout(typeLine, 80);
-      }
+  
+  const codeDisplay = document.getElementById('code-display');
+  let codeIndex = 0;
+  
+  function typeCode() {
+    if (codeIndex < codeLines.length) {
+      const line = document.createTextNode(codeLines[codeIndex]);
+      codeDisplay.appendChild(line);
+      const br = document.createElement('br');
+      codeDisplay.appendChild(br);
+      codeIndex++;
+      setTimeout(typeCode, 100);
     }
-    setTimeout(typeLine, 400);
   }
-
-  const revealElems = document.querySelectorAll('.fade-in');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  revealElems.forEach(e => obs.observe(e));
-
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(section => {
-    const fadeElements = section.querySelectorAll('.section-title, .project-card, .skill-group, .contact-item, .platform-link');
-    fadeElements.forEach(el => el.classList.add('fade-in'));
-  });
-
-  const skillSection = document.getElementById('skills');
-  if (skillSection) {
-    let triggered = false;
-    const bars = skillSection.querySelectorAll('.skill-progress');
-    function animateBars() {
-      bars.forEach(bar => {
-        const pct = bar.getAttribute('data-width');
-        bar.style.width = pct + '%';
-      });
-    }
-    const barObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting && !triggered) {
-          animateBars();
-          triggered = true;
-        }
-      });
-    }, { threshold: 0.2 });
-    barObs.observe(skillSection);
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+  
+  setTimeout(typeCode, 500);
+  
+  const links = document.querySelectorAll('a[href^="#"]');
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
@@ -122,4 +102,20 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll('.bar');
+        bars.forEach(bar => {
+          bar.style.width = bar.style.width;
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  const skillsSection = document.querySelector('.skills');
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
 });
