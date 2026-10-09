@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bixed </title>
+  <title>Bixed</title>
   <meta name="description" content="Landing page for Bix"/>
   <meta property="og:title" content="Bix"/>
   <meta property="og:description" content="Landing page for Bix."/>
@@ -12,171 +12,199 @@
   <meta property="og:type" content="website"/>
   <link rel="stylesheet" href="styles.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-content">
-      <span class="nav-title">Bix</span>
-      <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
-      <label class="theme-switch" for="theme-toggle" aria-hidden="true">
-        <span class="moon"><i class="fa fa-moon"></i></span>
-        <span class="sun"><i class="fa fa-sun"></i></span>
-      </label>
-    </div>
-  </nav>
+  <div class="theme-toggle-wrapper">
+    <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+    <label class="theme-toggle" for="theme-toggle">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </label>
+  </div>
 
   <main>
-    <section id="hero" class="section wide hero-section">
-      <div class="hero-grid">
-        <div class="hero-img-wrapper">
-          <div class="hero-img-container">
-            <img src="https://github.com/Bixbr/Bixbr.github.io/blob/main/christmas-logo.png?raw=true" alt="Bix's avatar" class="hero-img"/>
-          </div>
-          <div class="hero-img-glow"></div>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-avatar">
+          <img src="https://github.com/Bixbr/Bixbr.github.io/blob/main/christmas-logo.png?raw=true" alt="Bix's avatar" class="avatar-img"/>
         </div>
-        <div class="hero-content">
-          <h1 class="hero-title">Hi, I'm <span class="gradient-text">Bix</span></h1>
-          <h2 class="hero-animated" id="animated-tagline"></h2>
-          <p class="hero-lead">
-            Tech enthusiast. Opinionated about politics. Gaming aficionado. Based in the UK.<br>
-            Welcome to my digital space!
+        <div class="hero-text">
+          <h1 class="hero-name">Bix</h1>
+          <p class="hero-subtitle" id="animated-tagline"></p>
+          <p class="hero-description">
+            Tech enthusiast. Opinionated about politics. Gaming aficionado. Based in the UK.
           </p>
-          <div class="hero-socials">
-            <a href="mailto:bix@bixed.xyz" aria-label="Email" class="social-btn"><i class="fa fa-envelope"></i></a>
-            <a href="https://github.com/Bixbr" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn"><i class="fab fa-github"></i></a>
-            <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" rel="noopener" aria-label="Steam" class="social-btn"><i class="fab fa-steam"></i></a>
-            <a href="https://discord.gg/bixbri" target="_blank" aria-label="Discord" class="social-btn"><i class="fab fa-discord"></i></a>
-            <a href="https://x.com/Bixbrit" target="_blank" rel="noopener" aria-label="Twitter" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Get in touch</a>
+            <a href="#projects" class="btn btn-secondary">View work</a>
           </div>
         </div>
       </div>
-      <div class="scroll-down">
+      <div class="scroll-indicator">
         <span></span>
       </div>
     </section>
 
-    <section id="about" class="section fade-in about-section">
-      <h2>About</h2>
-      <p>
-        Hello, my name is <b>Bix</b> (pseudonym). I have a strong interest in technology and politics. I am originally from the United Kingdom of Great Britain and Northern Ireland. You probably know me from my obsessive use of Arch Linux and my political opinions. I'm a part-time developer and full-time enthusiast for all things tech.
-        <i>Site inspired by StarWarsK – thanks!</i>
-      </p>
-      <div class="about-code">
-        <pre id="about-code"></pre>
-      </div>
-    </section>
-
-    <section id="projects" class="section fade-in projects-section">
-      <h2>Projects</h2>
-      <div class="projects-list">
-        <div class="project-card">
-          <div class="card-shine"></div>
-          <h3>This website!</h3>
-          <p>This is one of my first projects!</p>
-          <div class="project-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JS</span>
+    <section id="about" class="section about">
+      <div class="section-wrapper">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Hello, my name is <strong>Bix</strong> (pseudonym). I have a strong interest in technology and politics. I am originally from the United Kingdom of Great Britain and Northern Ireland. You probably know me from my obsessive use of Arch Linux and my passionate political opinions.
+            </p>
+            <p>
+              I'm a developer, a gamer, and someone who believes in building beautiful, functional digital experiences. Welcome to my digital space!
+            </p>
+            <p class="about-credit"><em>Site inspired by StarWarsK – thanks!</em></p>
           </div>
-        </div>
-        <div class="project-card coming">
-          <div class="card-shine"></div>
-          <h3>Coming soon???</h3>
-          <p class="emoji">👀</p>
-          <div class="project-tags">
-            <span>React</span>
-            <span>Node.js</span>
-            <span>MongoDB</span>
-          </div>
-        </div>
-        <div class="project-card coming">
-          <div class="card-shine"></div>
-          <h3>Coming soon???</h3>
-          <p class="emoji">👀</p>
-          <div class="project-tags">
-            <span>Python</span>
-            <span>Flask</span>
-            <span>SQLite</span>
+          <div class="about-code">
+            <pre id="about-code"></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="section fade-in skills-section">
-      <h2>Skills</h2>
-      <div class="skills-grids">
-        <div class="skill-column">
-          <h3>Coding Languages</h3>
-          <div class="skill-bar">
-            <span>CSS</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="15"></div></div>
+    <section id="projects" class="section projects">
+      <div class="section-wrapper">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <h3>This website!</h3>
+            </div>
+            <p class="project-desc">This is one of my first projects!</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JS</span>
+            </div>
           </div>
-          <div class="skill-bar">
-            <span>HTML</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="20"></div></div>
+          <div class="project-card project-coming">
+            <div class="project-header">
+              <h3>Coming soon</h3>
+            </div>
+            <p class="project-desc emoji">👀</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
           </div>
-          <div class="skill-bar">
-            <span>Arch</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="15"></div></div>
-          </div>
-        </div>
-        <div class="skill-column">
-          <h3>Some Amazing Games</h3>
-          <div class="skill-bar">
-            <span>Battlefront 2</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="80"></div></div>
-          </div>
-          <div class="skill-bar">
-            <span>Minecraft</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="75"></div></div>
-          </div>
-          <div class="skill-bar">
-            <span>Pokémon</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="40"></div></div>
-          </div>
-        </div>
-        <div class="skill-column">
-          <h3>These are the best.</h3>
-          <div class="skill-bar">
-            <span>Arch Linux</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="100"></div></div>
-          </div>
-          <div class="skill-bar">
-            <span>Arch Linux</span>
-            <div class="bar-bg"><div class="bar-fill" data-width="100"></div></div>
+          <div class="project-card project-coming">
+            <div class="project-header">
+              <h3>Coming soon</h3>
+            </div>
+            <p class="project-desc emoji">👀</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">SQLite</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="platforms" class="section fade-in platforms-section">
-      <h2>Platforms</h2>
-      <div class="platforms-list">
-        <a href="https://github.com/Bixbr" target="_blank" class="platform-btn"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://x.com/Bixbrit" target="_blank" class="platform-btn"><i class="fab fa-x-twitter"></i> Twitter</a>
-        <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" class="platform-btn"><i class="fab fa-steam"></i> Steam</a>
-        <span class="platform-btn"><i class="fab fa-discord"></i> bixbri</span>
+    <section id="skills" class="section skills">
+      <div class="section-wrapper">
+        <h2 class="section-title">Skills & Interests</h2>
+        <div class="skills-container">
+          <div class="skill-group">
+            <h3 class="skill-group-title">Coding Languages</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">CSS</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="15"></div></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">HTML</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="20"></div></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Arch</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="15"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group-title">Favorite Games</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Battlefront 2</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Minecraft</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Pokémon</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="40"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group-title">The Best</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Arch Linux</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Arch Linux</span>
+                <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="section fade-in contact-section">
-      <h2>Contact</h2>
-      <div class="contact-cards">
-        <div class="contact-card">
-          <i class="fa fa-envelope"></i>
-          <a href="mailto:bix@bixed.xyz">bix@bixed.xyz</a>
+    <section id="platforms" class="section platforms">
+      <div class="section-wrapper">
+        <h2 class="section-title">Connect</h2>
+        <div class="platforms-grid">
+          <a href="https://github.com/Bixbr" target="_blank" rel="noopener" class="platform-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://x.com/Bixbrit" target="_blank" rel="noopener" class="platform-link">
+            <i class="fab fa-x-twitter"></i>
+            <span>Twitter</span>
+          </a>
+          <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" rel="noopener" class="platform-link">
+            <i class="fab fa-steam"></i>
+            <span>Steam</span>
+          </a>
+          <div class="platform-link">
+            <i class="fab fa-discord"></i>
+            <span>bixbri</span>
+          </div>
         </div>
-        <div class="contact-card">
-          <i class="fa fa-location-dot"></i>
-          <span>United Kingdom of Great Britain and Northern Ireland</span>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="section-wrapper">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-content">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:bix@bixed.xyz">bix@bixed.xyz</a>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>United Kingdom of Great Britain and Northern Ireland</span>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <p>&copy; <span id="current-year"></span> Bix. Copilot Test</p>
   </footer>
 
