@@ -12,7 +12,7 @@
   <meta property="og:type" content="website"/>
   <link rel="stylesheet" href="styles.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
@@ -28,26 +28,27 @@
   </nav>
 
   <main>
-    <!-- HERO -->
-    <section id="hero" class="section wide">
+    <section id="hero" class="section wide hero-section">
       <div class="hero-grid">
         <div class="hero-img-wrapper">
-          <img src="https://github.com/Bixbr/Bixbr.github.io/blob/main/christmas-logo.png?raw=true" alt="Bix's avatar" class="hero-img"/>
+          <div class="hero-img-container">
+            <img src="https://github.com/Bixbr/Bixbr.github.io/blob/main/christmas-logo.png?raw=true" alt="Bix's avatar" class="hero-img"/>
+          </div>
           <div class="hero-img-glow"></div>
         </div>
         <div class="hero-content">
-          <h1 class="hero-title">Hi, I’m <span>Bix</span></h1>
+          <h1 class="hero-title">Hi, I'm <span class="gradient-text">Bix</span></h1>
           <h2 class="hero-animated" id="animated-tagline"></h2>
           <p class="hero-lead">
             Tech enthusiast. Opinionated about politics. Gaming aficionado. Based in the UK.<br>
             Welcome to my digital space!
           </p>
           <div class="hero-socials">
-            <a href="mailto:bix@bixed.xyz" aria-label="Email"><i class="fa fa-envelope"></i></a>
-            <a href="https://github.com/Bixbr" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" rel="noopener" aria-label="Steam"><i class="fab fa-steam"></i></a>
-            <a href="https://discord.gg/bixbri" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-            <a href="https://x.com/Bixbrit" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="mailto:bix@bixed.xyz" aria-label="Email" class="social-btn"><i class="fa fa-envelope"></i></a>
+            <a href="https://github.com/Bixbr" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn"><i class="fab fa-github"></i></a>
+            <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" rel="noopener" aria-label="Steam" class="social-btn"><i class="fab fa-steam"></i></a>
+            <a href="https://discord.gg/bixbri" target="_blank" aria-label="Discord" class="social-btn"><i class="fab fa-discord"></i></a>
+            <a href="https://x.com/Bixbrit" target="_blank" rel="noopener" aria-label="Twitter" class="social-btn"><i class="fab fa-x-twitter"></i></a>
           </div>
         </div>
       </div>
@@ -56,11 +57,10 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section fade-in">
+    <section id="about" class="section fade-in about-section">
       <h2>About</h2>
       <p>
-        Hello, my name is <b>Bix</b> (pseudonym). I have a strong interest in technology and politics. I am originally from the United Kingdom of Great Britain and Northern Ireland. You probably know me as "Bixbr" online, or just "Bix".<br>
+        Hello, my name is <b>Bix</b> (pseudonym). I have a strong interest in technology and politics. I am originally from the United Kingdom of Great Britain and Northern Ireland. You probably know me from my obsessive use of Arch Linux and my political opinions. I'm a part-time developer and full-time enthusiast for all things tech.
         <i>Site inspired by StarWarsK – thanks!</i>
       </p>
       <div class="about-code">
@@ -68,11 +68,11 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section fade-in">
+    <section id="projects" class="section fade-in projects-section">
       <h2>Projects</h2>
       <div class="projects-list">
         <div class="project-card">
+          <div class="card-shine"></div>
           <h3>This website!</h3>
           <p>This is one of my first projects!</p>
           <div class="project-tags">
@@ -82,6 +82,7 @@
           </div>
         </div>
         <div class="project-card coming">
+          <div class="card-shine"></div>
           <h3>Coming soon???</h3>
           <p class="emoji">👀</p>
           <div class="project-tags">
@@ -91,6 +92,7 @@
           </div>
         </div>
         <div class="project-card coming">
+          <div class="card-shine"></div>
           <h3>Coming soon???</h3>
           <p class="emoji">👀</p>
           <div class="project-tags">
@@ -102,12 +104,10 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section fade-in">
+    <section id="skills" class="section fade-in skills-section">
       <h2>Skills</h2>
       <div class="skills-grids">
-        <!-- Coding languages -->
-        <div>
+        <div class="skill-column">
           <h3>Coding Languages</h3>
           <div class="skill-bar">
             <span>CSS</span>
@@ -122,8 +122,7 @@
             <div class="bar-bg"><div class="bar-fill" data-width="15"></div></div>
           </div>
         </div>
-        <!-- Favorite games -->
-        <div>
+        <div class="skill-column">
           <h3>Some Amazing Games</h3>
           <div class="skill-bar">
             <span>Battlefront 2</span>
@@ -138,8 +137,7 @@
             <div class="bar-bg"><div class="bar-fill" data-width="40"></div></div>
           </div>
         </div>
-        <!-- Best ofs -->
-        <div>
+        <div class="skill-column">
           <h3>These are the best.</h3>
           <div class="skill-bar">
             <span>Arch Linux</span>
@@ -153,23 +151,27 @@
       </div>
     </section>
 
-    <!-- PLATFORMS -->
-    <section id="platforms" class="section fade-in">
+    <section id="platforms" class="section fade-in platforms-section">
       <h2>Platforms</h2>
       <div class="platforms-list">
-        <a href="https://github.com/Bixbr" target="_blank" class="platform"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://x.com/Bixbrit" target="_blank" class="platform"><i class="fab fa-x-twitter"></i> Twitter</a>
-        <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" class="platform"><i class="fab fa-steam"></i> Steam</a>
-        <span class="platform"><i class="fab fa-discord"></i> bixbri</span>
+        <a href="https://github.com/Bixbr" target="_blank" class="platform-btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://x.com/Bixbrit" target="_blank" class="platform-btn"><i class="fab fa-x-twitter"></i> Twitter</a>
+        <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" class="platform-btn"><i class="fab fa-steam"></i> Steam</a>
+        <span class="platform-btn"><i class="fab fa-discord"></i> bixbri</span>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section fade-in">
+    <section id="contact" class="section fade-in contact-section">
       <h2>Contact</h2>
       <div class="contact-cards">
-        <div><i class="fa fa-envelope"></i> <a href="mailto:bix@bixed.xyz">bix@bixed.xyz</a></div>
-        <div><i class="fa fa-location-dot"></i> United Kingdom of Great Britain and Northern Ireland</div>
+        <div class="contact-card">
+          <i class="fa fa-envelope"></i>
+          <a href="mailto:bix@bixed.xyz">bix@bixed.xyz</a>
+        </div>
+        <div class="contact-card">
+          <i class="fa fa-location-dot"></i>
+          <span>United Kingdom of Great Britain and Northern Ireland</span>
+        </div>
       </div>
     </section>
   </main>
