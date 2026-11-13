@@ -2,7 +2,7 @@
 <html lang="en-gb">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Bix - Tech Enthusiast & Developer</title>
   <meta name="description" content="Bix - Tech enthusiast, gamer, and developer based in the UK.">
   <meta property="og:title" content="Bix">
@@ -10,45 +10,67 @@
   <meta property="og:image" content="https://github.com/Bixbr/Bixbr.github.io/blob/main/christmas-logo.png?raw=true">
   <meta property="og:url" content="https://bixed.xyz">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="modern.css">
-<script src="modern.js" defer></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#000000">
+  <script>
+    (function (d) {
+      var r = d.documentElement, t = null;
+      r.classList.add('js');
+      try { t = localStorage.getItem('bix-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      r.dataset.theme = t;
+    })(document);
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
 </head>
 <body>
-  <div class="theme-toggle-btn">
-    <input type="checkbox" id="dark-mode-toggle">
-    <label for="dark-mode-toggle" class="toggle-label">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-    </label>
-  </div>
+  <header class="nav">
+    <a class="nav-title" href="#hero">Bix</a>
+    <nav class="nav-pill" aria-label="Sections">
+      <span class="nav-thumb" aria-hidden="true"></span>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills & Interests</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="true">
+      <svg class="i icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </header>
 
   <main>
     <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-wrapper">
-          <div class="hero-image">
-            <img src="pfp-emu-community.png" alt="Bix" class="avatar">
-          </div>
-          <div class="hero-content">
-            <h1>Bix</h1>
-            <p class="tagline" id="typed-text"></p>
-            <p class="description">
-              Tech enthusiast. Opinionated about politics. Gaming aficionado. Based in the UK.
-              <br>Welcome to my digital space!
-            </p>
-            <div class="hero-links">
-              <a href="mailto:bix@bixed.xyz" class="link-btn primary">Email Me</a>
-              <a href="#contact" class="link-btn secondary">Contact</a>
-            </div>
-          </div>
+      <div class="hero-inner">
+        <img src="pfp-emu-community.png" alt="Bix" class="avatar" decoding="async" fetchpriority="high">
+        <h1>Bix</h1>
+        <div class="tagline" id="typed-text">
+          <ul class="taglines" role="list">
+            <li class="on">Major Arch user</li>
+            <li>Full-time Arch user, part-time Androider</li>
+            <li>The sun never sets on the British Empire</li>
+            <li>#MakeBattlefront3, spread the word!</li>
+            <li>Yes this is my discord profile; It's a blue oreo, nothing else</li>
+            <li>Direct cause of having too much time on my hands</li>
+            <li>I'm a Tory, Get over it.</li>
+          </ul>
+        </div>
+        <p class="description">
+          Tech enthusiast. Opinionated about politics. Gaming aficionado. Based in the UK.
+          <br>Welcome to my digital space!
+        </p>
+        <div class="hero-links">
+          <a href="mailto:bix@bixed.xyz" class="btn primary">Email Me</a>
+          <a href="#contact" class="btn secondary">Contact</a>
         </div>
       </div>
-      <div class="scroll-indicator">
-        <span></span>
+      <div class="scroll-indicator" aria-hidden="true">
+        <svg class="i" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </section>
 
@@ -66,7 +88,8 @@
             <p class="credit"><em><a href="extra.html"> Extra</a></em></p>
           </div>
           <div class="code-block">
-            <pre id="code-display"></pre>
+            <div class="code-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <pre id="code-display" tabindex="0"><code><span class="ln"><span class="k">function</span> <span class="f">introduceMyself</span>() {</span><span class="ln">  <span class="k">const</span> me = {</span><span class="ln">    <span class="p">name</span>: <span class="s">"Bix"</span>,</span><span class="ln">    <span class="p">role</span>: <span class="s">"Side character"</span>,</span><span class="ln">    <span class="p">skills</span>: [<span class="s">"Colonising"</span>, <span class="s">"Arch"</span>, <span class="s">"rizz"</span>],</span><span class="ln">    <span class="p">interests</span>: [<span class="s">"Gaming"</span>, <span class="s">"Coding"</span>],</span><span class="ln">    <span class="p">currentlyLearning</span>: <span class="s">"Javascript!"</span></span><span class="ln">  };</span><span class="ln">  console.log(<span class="s">"Hello World! I'm "</span> + me.name);</span><span class="ln">  <span class="k">return</span> me;</span><span class="ln">}</span></code></pre>
           </div>
         </div>
       </div>
@@ -79,29 +102,29 @@
           <div class="project-item">
             <h3>This website!</h3>
             <p>This is one of my first projects!</p>
-            <div class="tech-tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JS</span>
-            </div>
+            <ul class="tech-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JS</li>
+            </ul>
           </div>
           <div class="project-item coming-soon">
             <h3>Coming soon</h3>
             <p>👀</p>
-            <div class="tech-tags">
-              <span>React</span>
-              <span>Node.js</span>
-              <span>MongoDB</span>
-            </div>
+            <ul class="tech-tags">
+              <li>React</li>
+              <li>Node.js</li>
+              <li>MongoDB</li>
+            </ul>
           </div>
           <div class="project-item coming-soon">
             <h3>Coming soon</h3>
             <p>👀</p>
-            <div class="tech-tags">
-              <span>Python</span>
-              <span>Flask</span>
-              <span>SQLite</span>
-            </div>
+            <ul class="tech-tags">
+              <li>Python</li>
+              <li>Flask</li>
+              <li>SQLite</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -115,16 +138,16 @@
             <h3>Coding Languages</h3>
             <div class="skill-bars">
               <div class="skill">
-                <label>CSS</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 15%"></div></div>
+                <span class="skill-name">CSS</span>
+                <div class="bar-wrapper" role="meter" aria-label="CSS" aria-valuemin="0" aria-valuemax="100" aria-valuenow="15"><div class="bar" style="--w: 15%"></div></div>
               </div>
               <div class="skill">
-                <label>HTML</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 20%"></div></div>
+                <span class="skill-name">HTML</span>
+                <div class="bar-wrapper" role="meter" aria-label="HTML" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20"><div class="bar" style="--w: 20%"></div></div>
               </div>
               <div class="skill">
-                <label>Arch</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 15%"></div></div>
+                <span class="skill-name">Arch</span>
+                <div class="bar-wrapper" role="meter" aria-label="Arch" aria-valuemin="0" aria-valuemax="100" aria-valuenow="15"><div class="bar" style="--w: 15%"></div></div>
               </div>
             </div>
           </div>
@@ -132,16 +155,16 @@
             <h3>Some Amazing Games</h3>
             <div class="skill-bars">
               <div class="skill">
-                <label>Battlefront 2</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 80%"></div></div>
+                <span class="skill-name">Battlefront 2</span>
+                <div class="bar-wrapper" role="meter" aria-label="Battlefront 2" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="bar" style="--w: 80%"></div></div>
               </div>
               <div class="skill">
-                <label>Minecraft</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 75%"></div></div>
+                <span class="skill-name">Minecraft</span>
+                <div class="bar-wrapper" role="meter" aria-label="Minecraft" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="bar" style="--w: 75%"></div></div>
               </div>
               <div class="skill">
-                <label>Pokémon</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 40%"></div></div>
+                <span class="skill-name">Pokémon</span>
+                <div class="bar-wrapper" role="meter" aria-label="Pokémon" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40"><div class="bar" style="--w: 40%"></div></div>
               </div>
             </div>
           </div>
@@ -149,12 +172,12 @@
             <h3>These are the best.</h3>
             <div class="skill-bars">
               <div class="skill">
-                <label>Arch Linux</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 100%"></div></div>
+                <span class="skill-name">Arch Linux</span>
+                <div class="bar-wrapper" role="meter" aria-label="Arch Linux" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="bar full" style="--w: 100%"></div></div>
               </div>
               <div class="skill">
-                <label>Arch Linux</label>
-                <div class="bar-wrapper"><div class="bar" style="width: 100%"></div></div>
+                <span class="skill-name">Arch Linux</span>
+                <div class="bar-wrapper" role="meter" aria-label="Arch Linux" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="bar full" style="--w: 100%"></div></div>
               </div>
             </div>
           </div>
@@ -167,20 +190,20 @@
         <h2>Platforms</h2>
         <div class="platforms-grid">
           <a href="https://github.com/Bixbr" target="_blank" rel="noopener" class="platform-card">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
+            <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+            <span class="name">GitHub</span>
           </a>
           <a href="https://x.com/Bixbrit" target="_blank" rel="noopener" class="platform-card">
-            <i class="fab fa-x-twitter"></i>
-            <span>Twitter</span>
+            <span class="icon"><i class="fab fa-x-twitter" aria-hidden="true"></i></span>
+            <span class="name">Twitter</span>
           </a>
           <a href="https://steamcommunity.com/profiles/76561198823311668/" target="_blank" rel="noopener" class="platform-card">
-            <i class="fab fa-steam"></i>
-            <span>Steam</span>
+            <span class="icon"><i class="fab fa-steam" aria-hidden="true"></i></span>
+            <span class="name">Steam</span>
           </a>
           <div class="platform-card">
-            <i class="fab fa-discord"></i>
-            <span>bixbri</span>
+            <span class="icon"><i class="fab fa-discord" aria-hidden="true"></i></span>
+            <span class="name">bixbri</span>
           </div>
         </div>
       </div>
@@ -191,14 +214,14 @@
         <h2>Contact</h2>
         <div class="contact-grid">
           <div class="contact-item">
-            <i class="fas fa-envelope"></i>
+            <span class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
             <div>
               <strong>Email</strong>
               <a href="mailto:bix@bixed.xyz">bix@bixed.xyz</a>
             </div>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
+            <span class="icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
             <div>
               <strong>Location</strong>
               <p>United Kingdom of Great Britain and Northern Ireland</p>
@@ -214,7 +237,5 @@
       <p>&copy; <span id="year"></span> Bix. Copyright 2026</p>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

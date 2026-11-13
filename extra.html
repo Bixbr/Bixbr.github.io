@@ -3,63 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Bix's Extra</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg-light: #fff;
-      --text-light: #000;
-      --bg-dark: #121212;
-      --text-dark: #f0f0f0;
-      --font: system-ui, sans-serif;
-    }
-
-    body {
-      margin: 2em 1em;
-      font-family: var(--font);
-      background-color: light-dark(var(--bg-light), var(--bg-dark));
-      color: light-dark(var(--text-light), var(--text-dark));
-      line-height: 1.6;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    h2 {
-      font-size: 1.8em;
-      margin-bottom: 0.3em;
-    }
-
-    p {
-      font-size: 1em;
-      margin-bottom: 1.2em;
-    }
-
-    a {
-      display: inline-block;
-      padding: 0.4em 0;
-      font-weight: 500;
-      color: inherit;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      text-decoration: none;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#000000">
+  <script>
+    (function (d) {
+      var r = d.documentElement, t = null;
+      r.classList.add('js');
+      try { t = localStorage.getItem('bix-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      r.dataset.theme = t;
+    })(document);
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>Bix's Extra</h2>
-  <p>
-    This page lists extras not available on the public site, including most services hosted at <code>bixed.xyz</code>.
-    If you need access to anything else, feel free to DM me on Discord at <strong>@bixbri</strong>.
-  </p>
-  <a href="Index-of.html">Eden backup</a>
-  <br>
-  <a href="https://git.bixed.xyz/">Bix's Git</a>
-  <br>
-  <a href="TBC">Coming soon...</a>
-  <!-- Yes, I know this is on github so the source code is public, Which means this is a public site.-->
+  <header class="nav">
+    <a class="nav-title keep" href="index.html">Bix</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="true">
+      <svg class="i icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </header>
+
+  <main class="extra">
+    <div class="container narrow">
+      <h1 class="extra-title">Bix's Extra</h1>
+      <p class="extra-lead">
+        This page lists extras not available on the public site, including most services hosted at <code>bixed.xyz</code>.
+        If you need access to anything else, feel free to DM me on Discord at <strong>@bixbri</strong>.
+      </p>
+      <ul class="link-list">
+        <li><a href="Index-of.html">Eden backup</a></li>
+        <li><a href="https://git.bixed.xyz/">Bix's Git</a></li>
+        <li><a href="TBC">Coming soon...</a></li>
+      </ul>
+      <!-- Yes, I know this is on github so the source code is public, Which means this is a public site.-->
+    </div>
+  </main>
 </body>
 </html>
-
